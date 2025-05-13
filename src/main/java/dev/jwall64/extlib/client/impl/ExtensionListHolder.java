@@ -11,7 +11,6 @@ import dev.jwall64.mdcfg.ConfigObject;
 import dev.jwall64.mdcfg.codec.FileWrapper;
 import dev.jwall64.mdcfg.serializer.ConfigContext;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
