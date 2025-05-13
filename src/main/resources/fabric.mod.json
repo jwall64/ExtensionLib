@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "mixins": [
+    "extensionlib.mixins.json"
+  ],
+  "entrypoints": {
+    "main": [
+      "dev.jwall64.extlib.impl.Init"
+    ],
+    "client": [
+      "dev.jwall64.extlib.client.impl.ClientInit"
+    ]
+  }
+}
