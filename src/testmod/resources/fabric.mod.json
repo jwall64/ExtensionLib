@@ -4,5 +4,9 @@
   "version": "${version}",
   "entrypoints": {
     "main": [ "dev.jwall64.extlib.test.Init" ]
+  },
+  "depends": {
+    "${id}": "${version}",
+    "databridge": "*"
   }
 }

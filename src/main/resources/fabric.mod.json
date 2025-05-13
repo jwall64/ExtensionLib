@@ -12,5 +12,8 @@
     "client": [
       "dev.jwall64.extlib.client.impl.ClientInit"
     ]
+  },
+  "depends": {
+    "midnightcfg": "*"
   }
 }
