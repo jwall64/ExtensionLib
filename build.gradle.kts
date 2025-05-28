@@ -22,10 +22,10 @@ dependencies {
 
     compileOnly(libs.jetbrains.annotations)
 
-    modImplementation("dev.jwall64:midnightcfg-platform-minecraft:3.4.0")
+    modImplementation("dev.jwall64:midnightcfg-platform-minecraft:3.4.1-SNAPSHOT")
 
     modImplementation(libs.semver)
     include(libs.semver)
 
-    modImplementation("dev.jwall64:databridge:0.8.1")
+    modImplementation("dev.jwall64:databridge:0.8.2-SNAPSHOT")
 }
