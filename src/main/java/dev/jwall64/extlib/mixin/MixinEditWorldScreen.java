@@ -47,7 +47,7 @@ public class MixinEditWorldScreen extends Screen {
             ExtensionListHolder holder = new ExtensionListHolder.FileExtensionListHolder(extensions);
             ExtensionsScreen extensionsScreen = new ExtensionsScreen(this, holder);
 
-            minecraft.setScreen(extensionsScreen);
+            minecraft.gui.setScreen(extensionsScreen);
 
         }).width(200).build());
     }

@@ -6,7 +6,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
 import net.fabricmc.fabric.api.client.networking.v1.ClientLoginNetworking;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.FriendlyByteBufs;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.network.FriendlyByteBuf;
 import org.jetbrains.annotations.ApiStatus;
@@ -34,7 +34,7 @@ public class ClientInit implements ClientModInitializer {
                 map = map.intersection(((ExtensionListHolder) sd).getEnabledExtensions());
             }
 
-            FriendlyByteBuf out = PacketByteBufs.create();
+            FriendlyByteBuf out = FriendlyByteBufs.create();
             new ServerboundExtensionPacket(map).write(out);
 
             return CompletableFuture.completedFuture(out);

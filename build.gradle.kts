@@ -9,23 +9,22 @@ Utils.setupResources(project, rootProject, "fabric.mod.json")
 
 dependencies {
 
-    minecraft("com.mojang:minecraft:${project.properties["minecraft-version"]}")
-    mappings(loom.officialMojangMappings())
-    modImplementation("net.fabricmc:fabric-loader:${project.properties["fabric-loader-version"]}")
+    minecraft("com.mojang:minecraft:${project.findProperty("minecraft-version")}")
+    implementation("net.fabricmc:fabric-loader:${project.findProperty("fabric-loader-version")}")
 
     // Fabric API
     listOf(
         "fabric-networking-api-v1"
     ).forEach {
-        modApi(include(fabricApi.module(it, "${project.properties["fabric-api-version"]}"))!!)
+        api(include(fabricApi.module(it, "${project.findProperty("fabric-api-version")}"))!!)
     }
 
     compileOnly(libs.jetbrains.annotations)
 
-    modImplementation("dev.jwall64:midnightcfg-platform-minecraft:3.5.2")
+    implementation("dev.jwall64:midnightcfg-platform-minecraft:3.5.6")
 
-    modImplementation(libs.semver)
+    implementation(libs.semver)
     include(libs.semver)
 
-    modImplementation("dev.jwall64:databridge:0.10.0")
+    implementation("dev.jwall64:databridge:0.12.2")
 }

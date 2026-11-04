@@ -51,11 +51,11 @@ public class Init implements ModInitializer {
         });
 
         ServerLoginConnectionEvents.QUERY_START.register((listener, minecraftServer, loginPacketSender, loginSynchronizer) -> {
-            FriendlyByteBuf buf = PacketByteBufs.create();
+            FriendlyByteBuf buf = FriendlyByteBufs.create();
             loginPacketSender.sendPacket(ServerboundExtensionPacket.ID, buf);
         });
 
-        PayloadTypeRegistry.configurationS2C().register(ClientboundEnabledExtensionsPacket.TYPE, ClientboundEnabledExtensionsPacket.CODEC);
+        PayloadTypeRegistry.clientboundConfiguration().register(ClientboundEnabledExtensionsPacket.TYPE, ClientboundEnabledExtensionsPacket.CODEC);
 
         ServerConfigurationConnectionEvents.CONFIGURE.register((handler, server) -> {
             ExtensionMap extensions = ((ExtensionMapHolder) handler).getExtensionMap();

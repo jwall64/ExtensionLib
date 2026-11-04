@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.*;
@@ -107,7 +107,7 @@ public class ExtensionsScreen extends Screen {
     public void onClose() {
         serverData.setEnabledExtensions(
                 enabledExtensions.stream().filter(ent -> ent.enabled).map(ent -> ent.id).toList());
-        Minecraft.getInstance().setScreen(this.lastScreen);
+        Minecraft.getInstance().gui.setScreen(this.lastScreen);
     }
 
     @Override
@@ -164,18 +164,19 @@ public class ExtensionsScreen extends Screen {
             return 10.0F;
         }
 
-        protected void renderWidget(GuiGraphics guiGraphics, int i, int j, float f) {
+        @Override
+        public void extractWidgetRenderState(final GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float a) {
             guiGraphics.enableScissor(this.getX(), this.getY(), this.getX() + this.width, this.getY() + this.height);
             guiGraphics.pose().pushMatrix();
             guiGraphics.pose().translate(0.0F, (float) -this.scrollAmount());
 
             for (AbstractWidget abstractWidget : this.children) {
-                abstractWidget.render(guiGraphics, i, j, f);
+                abstractWidget.extractRenderState(guiGraphics, mouseX, mouseY, a);
             }
 
             guiGraphics.pose().popMatrix();
             guiGraphics.disableScissor();
-            this.renderScrollbar(guiGraphics, i, j);
+            this.extractScrollbar(guiGraphics, mouseX, mouseY);
         }
 
         protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
